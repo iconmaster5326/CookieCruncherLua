@@ -42,13 +42,17 @@ print("Hello. Welcome to LuaCruncher!")
 print("This program is currently only for Cookie Clicker Classic, and ignores the benefits of the Elder Pledge.")
 print("How many buildings do you want me to calculate the most optimal startegy up to? ")
 maxv = io.read("*l")
-print("")
+
 maxv = tonumber(maxv)
 if not maxv then
 	print("That wasn't a number! Please restart the program and actually put in a number, please.")
 	os.exit()
 end
 
+print("If you'd like to put all the calculations to a text file, please type the file's name here. Otherwise, just hit ENTER. ")
+cfile = io.open(io.read(),"a")
+
+print("")
 for iter=1,maxv do
 	best = nil
 	bestPrice = math.huge
@@ -60,6 +64,9 @@ for iter=1,maxv do
 	end
 	best.bought = best.bought + 1
 	print(iter .. ") Buy "..best.name..". CPS of "..calcCps())
+	if cfile then
+		cfile:write(iter .. ") Buy "..best.name..". CPS of "..calcCps().."\n")
+	end
 	iter = iter + 1
 end
 

@@ -16,4 +16,3 @@ To Do
   * Cookie Farms
   * Diferent progression scales
  * Elder Pledge support
- * Text file output
